@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="images/gift.png" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    /* Romantic Flowers Design System */
+    @layer base {
+      :root {
+        /* Romantic dark space theme */
+        --background: 260 15% 8%;
+        --foreground: 0 0% 98%;
+        --card: 260 15% 12%;
+        --card-foreground: 0 0% 98%;
+        --popover: 260 15% 12%;
+        --popover-foreground: 0 0% 98%;
+        --primary: 320 100% 80%;
+        --primary-foreground: 260 15% 8%;
+        --secondary: 120 50% 70%;
+        --secondary-foreground: 260 15% 8%;
+        --muted: 260 15% 20%;
+        --muted-foreground: 0 0% 70%;
+        --accent: 50 100% 80%;
+        --accent-foreground: 260 15% 8%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 260 15% 25%;
+        --input: 260 15% 25%;
+        --ring: 320 100% 80%;
+        --radius: 1rem;
+        --romantic-pink: 320 100% 85%;
+        --romantic-purple: 280 100% 80%;
+        --flower-green: 120 60% 60%;
+        --star-yellow: 50 100% 85%;
+        --heart-red: 0 100% 75%;
+      }
+    }
+
+    @layer base {
+      * {
+        @apply border-border;
+      }
+      body {
+        @apply bg-background text-foreground overflow-hidden;
+        background: hsl(var(--background));
+        color: hsl(var(--foreground));
+      }
+    }
+
+    /* Clean Romantic Background */
+    .night {
+      position: fixed;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    }
+
+    /* Stars Container */
+    .stars-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    /* Twinkling Stars */
+    .twinkling-star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle ease-in-out infinite alternate;
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+    }
+
+    @keyframes twinkle {
+      0% {
+        opacity: 0.3;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+
+    /* Subtle Shooting Stars */
+    .shooting-star {
+      position: absolute;
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+      animation: shooting-star 4s linear infinite;
+      opacity: 0;
+    }
+
+    .shooting-star::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      right: 0;
+      width: 3px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+    }
+
+    @keyframes shooting-star {
+      0% {
+        transform: translateX(-50vw) translateY(-50vh) rotate(45deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.8;
+      }
+      80% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateX(50vw) translateY(50vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    /* Text Animation */
+    @keyframes text-reveal {
+      0% {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .text-reveal {
+      animation: text-reveal 0.8s ease-out forwards;
+    }
+
+    /* Heart Beat Animation */
+    @keyframes heart-beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .heart-beat {
+      animation: heart-beat 1.5s ease-in-out infinite;
+    }
+
+    /* Button Glow Effect */
+    .btn-glow {
+      transition: all 0.3s ease;
+    }
+
+    .btn-glow:hover {
+      box-shadow: 0 0 20px hsl(var(--primary)), 0 0 40px hsl(var(--primary)), 0 0 60px hsl(var(--primary));
+      transform: translateY(-2px);
+    }
+  </style>
+  <title>Ich hab was für dich Mali</title>
+</head>
+
+<body class="min-h-screen bg-background text-foreground flex items-center justify-center relative overflow-hidden">
+  
+  <!-- Animated Background -->
+  <div class="night"></div>
+  
+  <!-- Stars Container -->
+  <div class="stars-container"></div>
+
+  <!-- Main Content -->
+  <div class="relative z-20 text-center space-y-8">
+    
+    <!-- Title -->
+    <div class="title-container">
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-2xl" 
+          style="text-shadow: 0 0 20px white, 0 0 40px rgba(255,255,255,0.5), 0 0 60px rgba(255,255,255,0.3);">
+        <span class="inline-block space-x-2" id="title"></span>
+      </h1>
+    </div>
+
+    <!-- Heart -->
+    <div class="flex justify-center">
+      <div class="text-6xl heart-beat">❤️</div>
+    </div>
+
+    <!-- Button -->
+    <div class="mt-12">
+      <a href="flower.html" 
+         class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-semibold rounded-full text-lg transition-all duration-300 btn-glow">
+        
+        <!-- Star Icon -->
+        <svg class="w-6 h-6 transition-transform duration-300 hover:scale-110" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"/>
+        </svg>
+        
+        <span>Mach auf</span>
+      </a>
+    </div>
+
+  </div>
+
+  <script>
+    // Generate Stars
+    function generateStars() {
+      const starsContainer = document.querySelector('.stars-container');
+      
+      // Generate 100 twinkling stars
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'twinkling-star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = Math.random() * 3 + 's';
+        star.style.animationDuration = (Math.random() * 2 + 1) + 's';
+        
+        const size = Math.random() * 3 + 1;
+        star.style.width = size + 'px';
+        star.style.height = size + 'px';
+        
+        starsContainer.appendChild(star);
+      }
+      
+      // Generate 8 subtle shooting stars
+      for (let i = 0; i < 8; i++) {
+        const shootingStar = document.createElement('div');
+        shootingStar.className = 'shooting-star';
+        shootingStar.style.left = Math.random() * 100 + '%';
+        shootingStar.style.top = Math.random() * 100 + '%';
+        shootingStar.style.animationDelay = Math.random() * 15 + 's';
+        shootingStar.style.animationDuration = (3 + Math.random() * 3) + 's';
+        starsContainer.appendChild(shootingStar);
+      }
+    }
+
+    // Text Animation
+    function animateTitle() {
+      const title = document.getElementById('title');
+      const text = 'Ich hab was für dich Mali';
+      const words = text.split(' ');
+      
+      words.forEach((word, wordIndex) => {
+        const wordSpan = document.createElement('span');
+        wordSpan.className = 'inline-block mr-4';
+        
+        word.split('').forEach((char, charIndex) => {
+          const charSpan = document.createElement('span');
+          charSpan.textContent = char;
+          charSpan.className = 'inline-block text-reveal opacity-0';
+          charSpan.style.animationDelay = (wordIndex * 0.5 + charIndex * 0.1) + 's';
+          wordSpan.appendChild(charSpan);
+        });
+        
+        title.appendChild(wordSpan);
+      });
+    }
+
+    // Initialize everything
+    document.addEventListener('DOMContentLoaded', function() {
+      generateStars();
+      animateTitle();
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(start index.html)",
+      "Bash(explorer:*)",
+      "Bash(cmd.exe /c start index.html)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git config:*)",
+      "Bash(gh auth:*)",
+      "Bash(rm:*)",
+      "Bash(git init:*)",
+      "Bash(gh repo create:*)"
+    ],
+    "deny": []
+  }
+}
